@@ -1,0 +1,51 @@
+<view class="header space-between">
+  <view class="btn flex-center" bindtap="dateSelection">
+    <view class="text">{{selectDay}}</view>
+    <text class=""></text>
+  </view>
+</view>
+<view wx:if='{{!calShow}}' class="{{isOpen?'':'calendar-box'}} {{dateShow?'active':''}}">
+  <view class="calendar-wrapper {{dateShow?'active':''}}">
+    <view class="calendar-panel">
+      <view class="calendar-panel-box">
+        <view>{{canlender.year}}年</view>
+        <view>{{canlender.month}}月</view>
+      </view>
+      <view class='backtoday' bindtap='backtoday'>
+        今天
+      </view>
+    </view>
+    <view class="calendar-header">
+      <view wx:for='{{dateWeeks}}'>{{item}}
+      <view></view>
+    </view>
+    </view>
+    <view wx:if='{{changeShow}}' class="calendar-body" bindtouchstart='touchStart' bindtouchend="touchEnd" data-type='week'>
+        <view class="calender-body-date-week">
+          <block wx:for="{{canlender.week}}" wx:for-item="day" wx:key="day">
+            <view class="date {{day.date==canlender.date ?'date-current': ''}}" data-index="{{index}}" data-ischeck="{{canlender.month || canlender.month -1 == day.month}}" 
+              bindtap='selectDay'>
+              {{day.date}}
+            </view>
+          </block>
+        </view>
+    </view>
+    <view  wx:if='{{!changeShow}}' class="calendar-body" bindtouchstart='touchStart' bindtouchend="touchEnd" data-type='month'>
+     <block wx:for="{{canlender.weeks}}" wx:for-item="weeks" wx:for-index="week" wx:key="weeks">
+        <view class="calender-body-date-week">
+          <block wx:for="{{weeks}}" wx:for-item="day" wx:key="day">
+            <view class="date {{canlender.month === day.month? '' : 'placeholder'}} {{(day.date==canlender.date||day.checked) && canlender.month == day.month?'date-current': ''}}" data-week="{{week}}" data-index="{{index}}" data-ischeck="{{canlender.month == day.month}}"
+              bindtap='selectDay'>
+              {{day.date}}
+              <view wx:if="{{day.have}}" class="data-circle"></view>
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+    <view class='img-center'>
+    <image src='{{imgChange}}' class='img' bindtap='weekShow'></image>
+    </view>
+    <view class="packup" bindtap='packup'>确定</view>
+  </view>
+</view>

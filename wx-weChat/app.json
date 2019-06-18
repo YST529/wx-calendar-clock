@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/clock/clock"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#ccccc",
+    "selectedColor": "#52b8f5",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "日历",
+      "iconPath": "images/calendar1.png",
+      "selectedIconPath": "images/calendar2.png"
+    },
+    {
+      "pagePath": "pages/clock/clock",
+      "text": "时钟",
+      "iconPath": "images/clock2.png",
+      "selectedIconPath": "images/clock1.png"
+    }]
+  }
+}
